@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ApiServiceService } from '../../services/api-service.service';
-import { CREATE, Users } from '../admin.model';
-import { ProviderModalComponent } from '../provider-modal/provider-modal.component';
+import { CREATE } from '../../app.model';
 import { UserModalComponent } from '../user-modal/user-modal.component';
 
 @Component({

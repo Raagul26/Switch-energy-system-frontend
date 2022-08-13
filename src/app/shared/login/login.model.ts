@@ -1,2 +1,2 @@
-export const LOGINSUCCESS = "Login Success"
-export const LOGINFAILED = "Login Failed"
+export const LOGINSUCCESS = 'Login Success'
+export const LOGINFAILED = 'Login Failed'

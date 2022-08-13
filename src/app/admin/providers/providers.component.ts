@@ -9,8 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProviderModalComponent } from '../provider-modal/provider-modal.component';
 import {
   CREATE,
-} from '../admin.model';
+} from '../../app.model';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { FAILURE, SUCCESS } from 'src/app/app.model';
 
 @Component({
   selector: 'app-providers',
@@ -66,9 +67,9 @@ export class ProvidersComponent implements OnInit {
 
   toggle(event: MatSlideToggleChange, provider: any) {
     if (event.checked) {
-      this.apiService.changeProviderStatus(provider.name, "enabled").subscribe(_ => this.openSnackBar("Enabled", "green-snackbar"));
+      this.apiService.changeProviderStatus(provider.name, 'enabled').subscribe(_ => this.openSnackBar('Enabled', SUCCESS));
     } else {
-      this.apiService.changeProviderStatus(provider.name, "disabled").subscribe(_ => this.openSnackBar("Disabled", "red-snackbar"));
+      this.apiService.changeProviderStatus(provider.name, 'disabled').subscribe(_ => this.openSnackBar('Disabled', FAILURE));
     }
   }
 

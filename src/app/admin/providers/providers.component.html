@@ -44,7 +44,10 @@
                 {{ toRupeesFormat(+provider.amountPerKwh) }}
               </td>
               <td class="py-3 px-6 text-center">
-                <mat-slide-toggle checked="{{provider.status === 'enabled'}}" (change)="toggle($event, provider)"></mat-slide-toggle>
+                <mat-slide-toggle
+                  checked="{{ provider.status === 'enabled' }}"
+                  (change)="toggle($event, provider)"
+                ></mat-slide-toggle>
               </td>
             </tr>
           </tbody>

@@ -125,9 +125,8 @@ export const PROFILE = '/profile';
 
 export const SUCCESS = 'green-snackbar';
 export const FAILURE = 'red-snackbar';
-export const INFO = 'white-snackbar';
-
 export const JWTTOKEN = 'jwttoken';
-
 export const ACCOUNTCREATED = 'Account created successfullt';
 export const INVALID = 'Invalid emailid or password';
+export const CREATE = 'create'
+export const UPDATE = 'Update'

@@ -1,0 +1,50 @@
+<div
+  class="flex fixed inset-0 outline-none focus:outline-none justify-center items-center bg-gray-400/80"
+>
+  <div class="relative my-6 w-1/2 shadow-2xl shadow-gray-500">
+    <!--body-->
+    <form
+      [formGroup]="smartMeterForm"
+      (ngSubmit)="createSmartMeter()"
+      class="bg-white"
+    >
+      <div class="relative p-6 flex-auto">
+      <h2>Smart Meter</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Meter Id</mat-label>
+            <input matInput type="text" formControlName="meterId" readonly/>
+            <mat-error class="text-xs" *ngIf="smartMeterForm.invalid"
+              >Meter Id must contain min 5 chars</mat-error
+            >
+            <mat-hint *ngIf="data.title === 'create'">Meter id is auto generated</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Provider Id</mat-label>
+            <mat-select formControlName="providerId">
+              <mat-option
+                value="{{ providerId }}"
+                *ngFor="let providerId of providerIds"
+              >
+                {{ providerId }}
+              </mat-option>
+            </mat-select>
+            <mat-error class="text-xs" *ngIf="smartMeterForm.invalid"
+              >Select provider</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end space-x-10 p-6">
+        <button mat-stroked-button mat-dialog-close color="primary" type="button">
+          CANCEL
+        </button>
+        <button mat-flat-button color="primary" type="submit">
+          {{ data.title | titlecase }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

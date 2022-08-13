@@ -17,7 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from '../shared/shared.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { SmartMeterComponent } from './smart-meters/smart-meters.component';
+import { SmartMetersComponent } from './smart-meters/smart-meters.component';
 import { ProviderModalComponent } from './provider-modal/provider-modal.component';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { ProvidersComponent } from './providers/providers.component';
@@ -28,7 +28,7 @@ import { ProvidersComponent } from './providers/providers.component';
     DashboardHomeComponent,
     UsersComponent,
     ProvidersComponent,
-    SmartMeterComponent,
+    SmartMetersComponent,
     ProviderModalComponent,
     UserModalComponent
   ],

@@ -5,6 +5,8 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { SmartMeterComponent } from 'src/app/user/smart-meter-modal/smart-meter-modal.component';
+import { CREATE, UPDATE } from 'src/app/app.model';
 import { ApiServiceService } from '../../services/api-service.service';
 
 @Component({
@@ -13,7 +15,7 @@ import { ApiServiceService } from '../../services/api-service.service';
   styles: [],
 })
 export class UserViewComponent implements OnInit {
-  smartMeters!:any;
+  smartMeters!: any;
   displaySpinner: boolean = true;
   isLoggedIn: string | null = localStorage.getItem('isUserLoggedIn');
   userId = localStorage.getItem('userId');
@@ -24,10 +26,10 @@ export class UserViewComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private apiService: ApiServiceService,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.apiService.getUserSmartMeters("raagul@user.com", "enabled").subscribe((res) => {
+    this.apiService.getUserSmartMeters('raagul@user.com', 'enabled').subscribe((res) => {
       this.displaySpinner = false;
       this.smartMeters = res;
       console.log(res)
@@ -51,8 +53,21 @@ export class UserViewComponent implements OnInit {
     });
   }
 
+  createSmartMeter() {
+    this.dialog.open(SmartMeterComponent, {
+      data: {
+        title: CREATE,
+      }
+    });
+  }
+
   edit(smartMeter: any) {
-    console.log('')
+    this.dialog.open(SmartMeterComponent, {
+      data: {
+        title: UPDATE,
+        rowData: smartMeter
+      }
+    });
   }
 
   // bookEvent(eventId: string): void {

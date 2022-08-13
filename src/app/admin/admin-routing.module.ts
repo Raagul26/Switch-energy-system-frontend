@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
-import { SmartMeterComponent } from './smart-meters/smart-meters.component';
+import { SmartMetersComponent } from './smart-meters/smart-meters.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { AdminGuard } from '../guards/admin.guard';
 
@@ -20,7 +20,7 @@ const routes: Routes = [
         path: 'providers',
         component: ProvidersComponent
       },
-      { path: 'smart-meters', component: SmartMeterComponent },
+      { path: 'smart-meters', component: SmartMetersComponent },
     ],
   }
 ];

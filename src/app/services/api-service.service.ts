@@ -1,18 +1,9 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Users } from '../admin/admin.model';
 import {
-  BookingsCount,
-  Events,
   JWTTOKEN,
-  Login,
-  LoginResponse,
-  OneEvent,
-  Response,
-  Signup,
   Titles,
-  User,
 } from '../app.model';
 
 @Injectable({
@@ -54,9 +45,7 @@ export class ApiServiceService {
   }
 
   getAllProviders(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'api/provider/all', {
-      headers: this.jwtToken,
-    });
+    return this.http.get<any>(this.baseUrl + 'api/provider/all');
   }
 
   getActiveSmartMeters(): Observable<Titles> {
@@ -70,8 +59,8 @@ export class ApiServiceService {
     });
   }
 
-  getNewSmartMeters(): Observable<Users> {
-    return this.http.get<Users>(
+  getNewSmartMeters(): Observable<any> {
+    return this.http.get<any>(
       this.baseUrl + 'api/smart-meter/new',
       { headers: this.jwtToken }
     );
@@ -92,11 +81,15 @@ export class ApiServiceService {
   }
 
   createUser(body: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl + "api/user", body);
+    return this.http.post<any>(this.baseUrl + 'api/user', body);
   }
 
   getUserSmartMeters(userId: string, status: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}api/smart-meter?userId=${userId}&status=${status}`);
+  }
+
+  enrollSmartMeter(body: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'api/smart-meter/enroll', body);
   }
 
 }

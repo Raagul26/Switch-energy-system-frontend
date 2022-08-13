@@ -15,15 +15,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { UserViewComponent } from './user-view/user-view.component';
+import { SmartMeterComponent } from './smart-meter-modal/smart-meter-modal.component';
 
 @NgModule({
   declarations: [
     SignupComponent,
     HomeComponent,
-    UserViewComponent
+    UserViewComponent,
+    SmartMeterComponent
   ],
   imports: [
     FormsModule,
@@ -31,6 +34,7 @@ import { UserViewComponent } from './user-view/user-view.component';
     UserRoutingModule,
     MatGridListModule,
     MatIconModule,
+    MatSelectModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -41,7 +45,7 @@ import { UserViewComponent } from './user-view/user-view.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     SharedModule,
-    MatAutocompleteModule
+    MatDialogModule
   ]
 })
 export class UserModule {}

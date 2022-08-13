@@ -1,15 +1,24 @@
 <div class="bg-zinc-100 h-full">
   <div class="flex justify-center text-2xl pt-5 uppercase font-sans font-medium">
-    Smart Energy System
+    Switch Energy System
   </div>
 
   <div *ngIf="displaySpinner" class="flex justify-center my-2">
     <mat-spinner [diameter]="50" strokeWidth="3"></mat-spinner>
   </div>
 
-  <div>
-    <div>
+
       <div class="bg-white shadow-md shadow-slate-200 rounded my-10 mx-16">
+        <div class="flex justify-end pr-4 pb-10 bg-zinc-100">
+          <button
+            mat-stroked-button
+            class="text-base"
+            color="primary"
+            (click)="createSmartMeter()"
+          >
+            Add Smart Meter
+          </button>
+        </div>
         <table class="min-w-max w-full table-auto">
           <thead>
             <tr
@@ -58,5 +67,3 @@
         </table>
       </div>
     </div>
-  </div>
-</div>

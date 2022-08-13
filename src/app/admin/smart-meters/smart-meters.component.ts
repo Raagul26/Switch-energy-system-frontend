@@ -6,7 +6,7 @@ import { ApiServiceService } from '../../services/api-service.service';
   templateUrl: './smart-meters.component.html',
   styles: [],
 })
-export class SmartMeterComponent implements OnInit {
+export class SmartMetersComponent implements OnInit {
   smartMeters!: any;
   newSmartMeters: any;
   loading: boolean = false;
@@ -25,15 +25,15 @@ export class SmartMeterComponent implements OnInit {
   }
 
   approve(smartMeter: any) {
-    this.apiService.changeSmartMeterStatus(smartMeter.meterId, "enabled").subscribe(res => console.log(res));
+    this.apiService.changeSmartMeterStatus(smartMeter.meterId, 'enabled').subscribe(res => console.log(res));
   }
 
   reject(smartMeter: any) {
-    this.apiService.changeSmartMeterStatus(smartMeter.meterId, "rejected").subscribe(res => console.log(res));
+    this.apiService.changeSmartMeterStatus(smartMeter.meterId, 'rejected').subscribe(res => console.log(res));
   }
 
   disable(smartMeter: any) {
-    this.apiService.changeSmartMeterStatus(smartMeter.meterId, "disable").subscribe(res => console.log(res));
+    this.apiService.changeSmartMeterStatus(smartMeter.meterId, 'disable').subscribe(res => console.log(res));
   }
   
 }

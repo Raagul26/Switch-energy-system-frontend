@@ -56,10 +56,10 @@ export class ProviderModalComponent implements OnInit {
     if (this.providerForm.valid) {
       this.apiService.createProvider(this.providerForm.value).subscribe(
         () => {
-          this.openSnackBar("Provider created successfully", SUCCESS);
+          this.openSnackBar('Provider created successfully', SUCCESS);
           this.reloadComponent();
         },
-        () => this.openSnackBar("Provider creation failed", FAILURE)
+        () => this.openSnackBar('Provider creation failed', FAILURE)
       );
       this.dialog.closeAll();
     } 
