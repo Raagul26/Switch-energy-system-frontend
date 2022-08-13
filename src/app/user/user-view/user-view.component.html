@@ -1,0 +1,62 @@
+<div class="bg-zinc-100 h-full">
+  <div class="flex justify-center text-2xl pt-5 uppercase font-sans font-medium">
+    Smart Energy System
+  </div>
+
+  <div *ngIf="displaySpinner" class="flex justify-center my-2">
+    <mat-spinner [diameter]="50" strokeWidth="3"></mat-spinner>
+  </div>
+
+  <div>
+    <div>
+      <div class="bg-white shadow-md shadow-slate-200 rounded my-10 mx-16">
+        <table class="min-w-max w-full table-auto">
+          <thead>
+            <tr
+              class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+            >
+              <th class="py-3 px-6 text-center">Meter Id</th>
+              <th class="py-3 px-6 text-center">Provider Id</th>
+              <th class="py-3 px-6 text-center">Readings</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="text-gray-600 text-sm font-light">
+            <tr
+              class="border-b border-gray-200 hover:bg-gray-100"
+              *ngFor="let smartMeter of smartMeters?.data"
+            >
+              <td
+                class="py-3 px-6 text-center whitespace-nowrap font-semibold hover:cursor-default"
+              >
+                {{ smartMeter.meterId }}
+              </td>
+              <td
+                class="py-3 px-6 text-center font-semibold hover:cursor-default"
+              >
+                {{ smartMeter.providerId }}
+              </td>
+              <td
+                class="py-3 px-6 text-center font-semibold hover:cursor-default"
+              >
+                {{ smartMeter.reading }}
+              </td>
+              <td
+                class="py-3 px-6 text-center font-semibold hover:cursor-default"
+              >
+                <div class="flex item-center justify-center space-x-8">
+                  <button
+                    class="w-4 mr-6 transform hover:text-red-500 hover:scale-110"
+                    (click)="edit(smartMeter)"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<h3 class="font-medium leading-tight text-3xl mt-0 text-blue-600">PROVIDERS</h3>
+<div *ngIf="loading" class="flex justify-center">
+  <mat-spinner [diameter]="50" strokeWidth="3"></mat-spinner>
+</div>
+<div class="overflow-x-auto" *ngIf="providers">
+  <div class="flex justify-end mr-4">
+    <button
+      mat-stroked-button
+      class="text-base"
+      color="primary"
+      (click)="create()"
+    >
+      Add provider
+    </button>
+  </div>
+  <div
+    class="min-w-screen min-h-screen flex justify-center bg-gray-100 font-sans overflow-"
+  >
+    <div class="w-full">
+      <div class="bg-white shadow-lg shadow-slate-200 rounded my-6">
+        <table class="min-w-max w-full table-auto">
+          <thead>
+            <tr
+              class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+            >
+              <th class="py-3 px-6 text-center">Name</th>
+              <th class="py-3 px-6 text-center">Amount Per KWH</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="text-gray-600 text-sm font-light">
+            <tr
+              class="border-b border-gray-200 hover:bg-gray-100"
+              *ngFor="let provider of providers.data"
+            >
+              <td
+                class="py-3 px-6 text-center whitespace-nowrap font-semibold hover:cursor-default"
+              >
+                {{ provider.name }}
+              </td>
+              <td
+                class="py-3 px-6 text-center font-semibold hover:cursor-default first-letter:mr-1"
+              >
+                {{ toRupeesFormat(+provider.amountPerKwh) }}
+              </td>
+              <td class="py-3 px-6 text-center">
+                <mat-slide-toggle checked="{{provider.status === 'enabled'}}" (change)="toggle($event, provider)"></mat-slide-toggle>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

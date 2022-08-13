@@ -1,0 +1,38 @@
+<div
+  class="flex fixed inset-0 outline-none focus:outline-none justify-center items-center bg-gray-400/80"
+>
+  <div class="relative my-6 w-1/2 shadow-2xl shadow-gray-500">
+    <!--body-->
+    <form [formGroup]="providerForm" (ngSubmit)="createProvider()" class="bg-white">
+      <div class="relative p-6 flex-auto">
+        <h2>Add Provider</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Provider Name</mat-label>
+            <input matInput type="text" formControlName="name" />
+            <mat-error class="text-xs" *ngIf="providerForm.invalid"
+              >Title must contain min 5 chars</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Amount Per KWH</mat-label>
+            <input type="number" matInput formControlName="amountPerKwh" />
+            <mat-error class="text-xs" *ngIf="providerForm.invalid"
+              >Amount should be greater than 0</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end space-x-10 p-6">
+        <button mat-stroked-button mat-dialog-close color="primary">
+          CANCEL
+        </button>
+        <button mat-flat-button color="primary" type="submit">
+          CREATE
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

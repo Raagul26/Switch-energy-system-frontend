@@ -1,0 +1,64 @@
+<div
+  class="flex fixed inset-0 outline-none focus:outline-none justify-center items-center bg-gray-400/80"
+>
+  <div class="relative my-6 w-1/2 shadow-2xl shadow-gray-500">
+    <!--body-->
+    <form [formGroup]="signupForm" (ngSubmit)="createUser()" class="bg-white">
+      <div class="relative p-6 flex-auto">
+        <h2>Add Admin</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="name" />
+            <mat-error class="text-xs" *ngIf="signupForm.invalid"
+              >Enter username with minimum lenght of 3</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Email Id</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="emailId"
+              placeholder="abc@example.com"
+            />
+            <mat-error class="text-xs" *ngIf="signupForm.invalid"
+              >Enter a valid email id</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-96">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <mat-error class="text-xs" *ngIf="signupForm.invalid"
+              >Password must contain min 5 chars</mat-error
+            >
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end space-x-10 p-6">
+        <button mat-stroked-button mat-dialog-close color="primary">
+          CANCEL
+        </button>
+        <button mat-flat-button color="primary" type="submit">
+          {{ data.title | titlecase }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

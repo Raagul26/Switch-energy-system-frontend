@@ -1,0 +1,127 @@
+<h3 class="font-medium leading-tight text-3xl mt-0 mb-2 text-blue-600">
+  SMART METERS
+</h3>
+
+<div *ngIf="loading" class="flex justify-center">
+  <mat-spinner [diameter]="50" strokeWidth="3"></mat-spinner>
+</div>
+
+<div class="min-w-screen flex justify-center font-sans mx-5">
+  <div class="w-full">
+    <div class="bg-white shadow-md shadow-slate-200 rounded my-6" *ngIf="newSmartMeters?.data.length">
+      <table class="min-w-max w-full table-auto">
+        <caption class="text-2xl p-5 bg-slate-100">
+          New Smart Meters
+        </caption>
+        <thead>
+          <tr
+            class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+          >
+            <th class="py-3 px-6 text-center">Meter Id</th>
+            <th class="py-3 px-6 text-center">User Id</th>
+            <th class="py-3 px-6 text-center">Provider Id</th>
+            <th class="py-3 px-6 text-center">Status</th>
+            <th class="py-3 px-6 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table-body" class="text-gray-600 text-sm font-light">
+          <tr
+            class="border-b border-gray-200 hover:bg-gray-100"
+            *ngFor="let smartMeter of newSmartMeters?.data"
+          >
+            <td
+              class="py-3 px-6 text-center whitespace-nowrap font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.meterId }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.emailId }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.providerId }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.status | titlecase }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              <div class="flex item-center justify-center space-x-8">
+                <button
+                  class="w-4 mr-6 transform hover:text-green-500 hover:scale-110"
+                  (click)="approve(smartMeter)"
+                >
+                  Approve
+                </button>
+                <button
+                  class="w-4 mr-6 transform hover:text-red-500 hover:scale-110"
+                  (click)="reject(smartMeter)"
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-white shadow-md shadow-slate-200 rounded my-10">
+      <table class="min-w-max w-full table-auto">
+        <caption class="text-2xl p-5 bg-slate-100">
+          Existing Smart Meters
+        </caption>
+        <thead>
+          <tr
+            class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+          >
+            <th class="py-3 px-6 text-center">Meter Id</th>
+            <th class="py-3 px-6 text-center">User Id</th>
+            <th class="py-3 px-6 text-center">Provider Id</th>
+            <th class="py-3 px-6 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table-body" class="text-gray-600 text-sm font-light">
+          <tr
+            class="border-b border-gray-200 hover:bg-gray-100"
+            *ngFor="let smartMeter of smartMeters?.data"
+          >
+            <td
+              class="py-3 px-6 text-center whitespace-nowrap font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.meterId }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.emailId }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              {{ smartMeter.providerId }}
+            </td>
+            <td
+              class="py-3 px-6 text-center font-semibold hover:cursor-default"
+            >
+              <div class="flex item-center justify-center space-x-8">
+                <button
+                  class="w-4 mr-6 transform hover:text-red-500 hover:scale-110"
+                  (click)="disable(smartMeter)"
+                >
+                  Disable
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
