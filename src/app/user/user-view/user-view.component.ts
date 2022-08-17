@@ -29,14 +29,18 @@ export class UserViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apiService.getUserSmartMeters('raagul@user.com', 'enabled').subscribe((res) => {
+    this.apiService.getUserSmartMeters('raagul@user.com', 'enabled').subscribe((res: any) => {
       this.displaySpinner = false;
       this.smartMeters = res;
-      console.log(res)
+      this.smartMeters.data.forEach((element: any) => {
+        this.apiService.getAmount(element.meterId).subscribe(res => {
+          element.amount = res.data
+        })
+      });
     });
   }
 
-  toRupeesFormat(num: Number): string {
+  toRupeesFormat(num: number): string {
     return num.toLocaleString('en-IN', {
       style: 'currency',
       currency: 'INR',
@@ -70,28 +74,8 @@ export class UserViewComponent implements OnInit {
     });
   }
 
-  // bookEvent(eventId: string): void {
-  //   const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-  //     data: {
-  //       title: BOOKCONFIRMATION + eventId,
-  //       btnName: BOOKEVENT,
-  //     },
-  //   });
-  //   dialogRef.afterClosed().subscribe((res) => {
-  //     if (this.isLoggedIn === 'true' && res) {
-  //       localStorage.setItem('eventId', eventId);
-  //       this.apiService.bookEvent().subscribe(
-  //         () => {
-  //           this.openSnackBar(EVENTBOOKED, SUCCESS);
-  //         },
-  //         (err) => {
-  //           this.openSnackBar(err.error.message, FAILURE);
-  //         }
-  //       );
-  //     } else if (this.isLoggedIn != 'true') {
-  //       this.openSnackBar(PLEASELOGIN, INFO);
-  //     }
-  //   });
-  // }
+  calculate(meterId: any) {
+    return this.apiService.getAmount(meterId).subscribe(res => res)
+  }
 
 }

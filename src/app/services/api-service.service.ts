@@ -92,4 +92,8 @@ export class ApiServiceService {
     return this.http.post<any>(this.baseUrl + 'api/smart-meter/enroll', body);
   }
 
+  getAmount(meterId: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}api/smart-meter/reading?meterId=${meterId}`);
+  }
+
 }
